@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="greenback"
+             x:Class="PhisilyncFinal.Views.TreatmentPage">
+
+    <Shell.TitleView Margin="0,0,0,0">
+        <Image 
+         Source="phisilyncgreen"
+         Aspect="Center"/>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame 
+                Grid.Row="0" 
+                Grid.ColumnSpan="0"
+                HeightRequest="300"
+                WidthRequest="350"
+                CornerRadius="50"
+                HorizontalOptions="CenterAndExpand"
+                IsClippedToBounds="True"
+                Padding="0"
+                BackgroundColor="White"
+                BorderColor="White" 
+                Margin="0,30,0,0">
+
+                <ImageButton Source="treatment" Aspect="Fill"/>
+            </Frame>
+            <Label 
+                Text="Current Treatment Plan"
+                VerticalOptions="Center" 
+                TextColor="White"
+                HorizontalOptions="Center"
+                 
+                FontAttributes="Bold"
+                Margin="0,20,0,20"     
+                FontSize="Large"/>
+            <Button
+                x:Name="LynoBtn"
+                Text="   Lyno Therapy   "
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                FontSize="Medium"
+                CornerRadius="15"
+                 WidthRequest="350"
+                BackgroundColor="SeaGreen"
+                Margin="0,20,0,20"
+                Clicked="LynoBtn_Clicked"/>
+            <Button
+            x:Name="MassageBtn"
+            Text="Massage Therapy"
+                 WidthRequest="350"
+            HorizontalOptions="CenterAndExpand"
+            FontSize="Medium"
+                CornerRadius="15"
+            BackgroundColor="SeaGreen"
+            Clicked="MassageBtn_Clicked"/>
+
+            <Label
+                Text="Post-Treatment Plan"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="White"
+                
+                FontAttributes="Bold"
+                Margin="0,20,0,20"     
+                FontSize="Large"/>
+            <Button
+                x:Name="TapingBtn"
+                Text="                  Taping                  "
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Medium"
+                 WidthRequest="350"
+                Margin="0,10,0,10"
+                CornerRadius="15"
+                BackgroundColor="SeaGreen"
+                Clicked="TapingBtn_Clicked"/>
+            <Button
+                x:Name="StretchBtn"
+                Text="    Stretching And Exercise    "
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Medium"
+               WidthRequest="350" 
+                CornerRadius="15"
+                Margin="0,10,0,10"
+                BackgroundColor="SeaGreen"
+                Clicked="StretchBtn_Clicked"/>
+            <Button
+                x:Name="RomBtn"
+                Text="Range Of Movement Therapy"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Medium"
+                CornerRadius="15"
+                 WidthRequest="350"
+                Margin="0,10,0,10"
+                BackgroundColor="SeaGreen"
+                Clicked="RomBtn_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

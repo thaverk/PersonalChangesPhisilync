@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cal="clr-namespace:Plugin.Maui.Calendar.Controls;assembly=Plugin.Maui.Calendar"
+             xmlns:chart="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="PhisilyncFinal.Views.ServiceProviderDashboard"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundImageSource="greenback"
+             Title="ServiceProviderDashboard">
+    <Shell.TitleView Margin="0,0,0,0">
+        <Image 
+        Source="phisilyncgreen"
+        Aspect="Center"/>
+    </Shell.TitleView>
+
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+
+            <toolkit:AvatarView
+                Text="Noah"
+                BorderColor="SeaGreen"
+                TextColor="White"
+                ImageSource="profileimage"
+                HorizontalOptions="End"
+                CornerRadius="360"
+                Margin="10"
+                WidthRequest="70"
+                HeightRequest="70"
+                BorderWidth="5"/>
+
+            <Label
+                Text="Noah Khan"
+                HorizontalOptions="End"
+                Margin="10,0"
+                TextColor="Beige"/>
+
+            <Label Text="Welcome (Service Provider Name)"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   Margin="20,10,0,0"/>
+
+            <Label
+                Text="Dashboard"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="Large"
+     
+                Margin="20,0,0,0"/>
+
+            <Label Text="Client Tracker"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="20"                   
+                   Margin="0,20,0,0"
+                   HorizontalTextAlignment="Center"/>
+
+            <Frame HeightRequest="300"
+                   WidthRequest="350"
+                   CornerRadius="10"
+                   IsClippedToBounds="True"
+                   BackgroundColor="White"
+                   BorderColor="White">
+
+                <chart:ChartView x:Name="clientTracker"
+                                 HeightRequest="200"/>
+            </Frame>
+
+            <Button Text="Types Of Injuries"
+                     FontAttributes="Bold"
+                     TextColor="White"
+                     BorderColor="White"
+                     Command="{Binding InjuryCommand}"
+                     BorderWidth="2"
+                     BackgroundColor="SeaGreen"
+                     CornerRadius="100"
+                     WidthRequest="350"
+                     HeightRequest="70"
+                     Margin="0,20,0,0"/>
+
+            <cal:Calendar Events="{Binding Events}" 
+          EventsScrollViewVisible="True" 
+          SelectedDayBackgroundColor="SeaGreen"
+          CalendarLayout="Month"
+          BackgroundColor="Transparent"
+          DayViewCornerRadius="5"
+          DeselectedDayTextColor="White"
+          SelectedDateColor="White"
+          ArrowsBackgroundColor="SeaGreen"
+          ArrowsBorderColor="White"
+          ArrowsColor="White"
+          DaysTitleColor="White"
+          DaysTitleWeekendColor="Beige" 
+          DisabledDayColor="White"
+          EventIndicatorColor="SeaGreen"
+          EventIndicatorSelectedColor="White"
+          EventIndicatorSelectedTextColor="White"
+          MonthLabelColor="White"
+          OtherMonthDayColor="DarkSeaGreen"
+          SelectedDayTextColor="White"
+          SelectedTodayTextColor="White"
+          TodayFillColor="#89a18b"
+          TodayOutlineColor="White"
+          TodayTextColor="White" 
+          WeekendDayColor="White"
+          YearLabelColor="White"
+          EventIndicatorTextColor="White"
+          Margin="0,30,0,0"
+                          WidthRequest="350"
+          HeightRequest="500">
+                <cal:Calendar.EventTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label 
+                Text="{Binding Name}" 
+                FontSize="25" 
+                TextColor="White"
+                FontAttributes="Bold"/>
+                            <Label 
+                Text="{Binding Description}"
+                TextColor="White"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </cal:Calendar.EventTemplate>
+            </cal:Calendar>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,320 @@
+﻿ <Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>PhisilyncFinal</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>PhisilyncFinal</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.phisilyncfinal</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="MintCream" BaseSize="420,520" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\anatomy.jpg" />
+	  <None Remove="Resources\Images\ankledorsiflexion.png" />
+	  <None Remove="Resources\Images\ankleever.webp" />
+	  <None Remove="Resources\Images\ankleeversionremovebg.png" />
+	  <None Remove="Resources\Images\ankleeversiontwo.jpg" />
+	  <None Remove="Resources\Images\ankleinver.jfif" />
+	  <None Remove="Resources\Images\ankleinverremovebg.png" />
+	  <None Remove="Resources\Images\ankleinversion.png" />
+	  <None Remove="Resources\Images\ankleinversioncapture.PNG" />
+	  <None Remove="Resources\Images\athleticscoach.jpg" />
+	  <None Remove="Resources\Images\backarrow.png" />
+	  <None Remove="Resources\Images\calf.jpg" />
+	  <None Remove="Resources\Images\calfremovebg.png" />
+	  <None Remove="Resources\Images\compliant.png" />
+	  <None Remove="Resources\Images\confident.jpg" />
+	  <None Remove="Resources\Images\cricketcoach.webp" />
+	  <None Remove="Resources\Images\cricketcoachb.jpg" />
+	  <None Remove="Resources\Images\dashboard.png" />
+	  <None Remove="Resources\Images\davids.jpg" />
+	  <None Remove="Resources\Images\determination.avif" />
+	  <None Remove="Resources\Images\dic.png" />
+	  <None Remove="Resources\Images\dotnet_bot.png" />
+	  <None Remove="Resources\Images\earphones.PNG" />
+	  <None Remove="Resources\Images\exercise.webp" />
+	  <None Remove="Resources\Images\facebook.png" />
+	  <None Remove="Resources\Images\facebook_sq.png" />
+	  <None Remove="Resources\Images\fbook.png" />
+	  <None Remove="Resources\Images\flexi.avif" />
+	  <None Remove="Resources\Images\freedom.jpg" />
+	  <None Remove="Resources\Images\gelant.jpg" />
+	  <None Remove="Resources\Images\glossary.png" />
+	  <None Remove="Resources\Images\goniometer.jpg" />
+	  <None Remove="Resources\Images\googleb.jpg" />
+	  <None Remove="Resources\Images\googleremove.png" />
+	  <None Remove="Resources\Images\greenback.jpg" />
+	  <None Remove="Resources\Images\greyg.jpg" />
+	  <None Remove="Resources\Images\hamstring.jpg" />
+	  <None Remove="Resources\Images\hamstringremovebg.png" />
+	  <None Remove="Resources\Images\hbbfourremovebg.png" />
+	  <None Remove="Resources\Images\hbbremovebg.png" />
+	  <None Remove="Resources\Images\hbbthree.jpg" />
+	  <None Remove="Resources\Images\heart.png" />
+	  <None Remove="Resources\Images\hipabd.jpg" />
+	  <None Remove="Resources\Images\hipabdremovebg.png" />
+	  <None Remove="Resources\Images\hipabduction.png" />
+	  <None Remove="Resources\Images\hipadd.jpg" />
+	  <None Remove="Resources\Images\hipaddremovebg.png" />
+	  <None Remove="Resources\Images\hipadductiontwo.gif" />
+	  <None Remove="Resources\Images\hippadductioncapture.PNG" />
+	  <None Remove="Resources\Images\info.png" />
+	  <None Remove="Resources\Images\information.png" />
+	  <None Remove="Resources\Images\informationdesk.jpg" />
+	  <None Remove="Resources\Images\insta.png" />
+	  <None Remove="Resources\Images\instagram.png" />
+	  <None Remove="Resources\Images\keysremovebg.png" />
+	  <None Remove="Resources\Images\kneeextension.png" />
+	  <None Remove="Resources\Images\kneeextensioncapture.PNG" />
+	  <None Remove="Resources\Images\kneetaping.jpg" />
+	  <None Remove="Resources\Images\lat.PNG" />
+	  <None Remove="Resources\Images\latremovebg.png" />
+	  <None Remove="Resources\Images\libok.jpg" />
+	  <None Remove="Resources\Images\lin.png" />
+	  <None Remove="Resources\Images\linkedin.png" />
+	  <None Remove="Resources\Images\locks.jpg" />
+	  <None Remove="Resources\Images\lynoheader.jpg" />
+	  <None Remove="Resources\Images\manuscript.png" />
+	  <None Remove="Resources\Images\massage.jpg" />
+	  <None Remove="Resources\Images\moerat.jpg" />
+	  <None Remove="Resources\Images\moos.jpg" />
+	  <None Remove="Resources\Images\musclestructure.jpg" />
+	  <None Remove="Resources\Images\neckflex.jpg" />
+	  <None Remove="Resources\Images\neckflexion.png" />
+	  <None Remove="Resources\Images\neckflexioncapture.PNG" />
+	  <None Remove="Resources\Images\neckflexremovebg.png" />
+	  <None Remove="Resources\Images\neckrot.jfif" />
+	  <None Remove="Resources\Images\neckrotation.png" />
+	  <None Remove="Resources\Images\neckrotremovebg.png" />
+	  <None Remove="Resources\Images\netballcoach.jpg" />
+	  <None Remove="Resources\Images\notificationstwo.png" />
+	  <None Remove="Resources\Images\patient.png" />
+	  <None Remove="Resources\Images\phisigreen_nobg.png" />
+	  <None Remove="Resources\Images\phisilyncappshell.png" />
+	  <None Remove="Resources\Images\phisilyncfinal.png" />
+	  <None Remove="Resources\Images\phisilyncgreen.png" />
+	  <None Remove="Resources\Images\phisilyncgreenback.png" />
+	  <None Remove="Resources\Images\phisilync_nobg.png" />
+	  <None Remove="Resources\Images\profileimage.webp" />
+	  <None Remove="Resources\Images\proud.jpg" />
+	  <None Remove="Resources\Images\qa.png" />
+	  <None Remove="Resources\Images\robot.png" />
+	  <None Remove="Resources\Images\rom.jpg" />
+	  <None Remove="Resources\Images\roms.jpg" />
+	  <None Remove="Resources\Images\rugbycoach.jpg" />
+	  <None Remove="Resources\Images\sacha.jpg" />
+	  <None Remove="Resources\Images\sendicon.png" />
+	  <None Remove="Resources\Images\sideflexremovebg.png" />
+	  <None Remove="Resources\Images\soccercoach.jpeg" />
+	  <None Remove="Resources\Images\storage.png" />
+	  <None Remove="Resources\Images\storagetwo.png" />
+	  <None Remove="Resources\Images\strength.jpg" />
+	  <None Remove="Resources\Images\stretches.jpg" />
+	  <None Remove="Resources\Images\swimmingcoach.jpg" />
+	  <None Remove="Resources\Images\tac.png" />
+	  <None Remove="Resources\Images\taping.jpg" />
+	  <None Remove="Resources\Images\tenniscoach.jpg" />
+	  <None Remove="Resources\Images\tensorcapture.PNG" />
+	  <None Remove="Resources\Images\teresminor.png" />
+	  <None Remove="Resources\Images\thelynoacademy.webp" />
+	  <None Remove="Resources\Images\therapyicon.png" />
+	  <None Remove="Resources\Images\tiktok.png" />
+	  <None Remove="Resources\Images\tiktoky.png" />
+	  <None Remove="Resources\Images\tiktok_large.png" />
+	  <None Remove="Resources\Images\toeextend.jpg" />
+	  <None Remove="Resources\Images\toeextendremovebg.png" />
+	  <None Remove="Resources\Images\toeextension.png" />
+	  <None Remove="Resources\Images\toktik.png" />
+	  <None Remove="Resources\Images\treatment.jpg" />
+	  <None Remove="Resources\Images\trunkrot.jfif" />
+	  <None Remove="Resources\Images\trunkrotation.png" />
+	  <None Remove="Resources\Images\trunkrotremovebg.png" />
+	  <None Remove="Resources\Images\tt.png" />
+	  <None Remove="Resources\Images\twitter.png" />
+	  <None Remove="Resources\Images\twitter_bird.png" />
+	  <None Remove="Resources\Images\willemse.png" />
+	  <None Remove="Resources\Images\workout.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.15" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microcharts.Maui" Version="1.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.20" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.20" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Plugin.Maui.Calendar" Version="1.1.7" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.8" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\InjuryLibraryPage.xaml.cs">
+	    <DependentUpon>InjuryLibraryPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="FlyOutControls\FlyoutFooter.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="FlyOutControls\FlyoutHeader.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AthleteDash.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CoachDashboard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditProfile.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FAQs.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GlossaryViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InjuryDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InjuryLibraryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LandingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LennyAiAnswerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LennyAiQuestionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LogInPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LynoTherapyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MassageTherapyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Payment.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PrivacyPolicy.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProfileDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProviderInjuryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RangeOfMovementPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SelectedInjuryDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SelectInjuryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ServiceProviderDashboard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Settings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SignUpPageAC.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SignUpPageCoach.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SignUpPageSP.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SkeletonViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\StretchesAndExercisePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TACPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TapingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TeamStatsPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TellUsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TestAndReleasePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TreatmentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

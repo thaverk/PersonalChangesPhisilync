@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="#23583a"
+             xmlns:local="clr-namespace:PhisilyncFinal.ViewModels"
+             x:Class="PhisilyncFinal.Views.SignUpPageAC" x:DataType="local:SignUpACVM" >
+
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="0">
+            <Image
+                Source="phisilyncgreenback"
+                 HeightRequest="100"
+                WidthRequest="400"
+                Aspect="AspectFill"
+                SemanticProperties.Description="Phisilync Logo" />
+
+            <Label
+                Text="Sign Up"
+                FontSize="Large"
+                FontAttributes="Bold"
+                Margin="0,0,0,0"
+                FontFamily="bubble"
+                TextColor="White" 
+                HorizontalOptions="CenterAndExpand" />
+            
+
+            <Entry
+                x:Name="nameEntry"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"
+                Placeholder="Name"
+                WidthRequest="350"
+                FontSize="20"
+                Margin="0,5,0,5"
+                Text="{Binding Name}">
+
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                ValidStyle="{StaticResource ValidEntryStyle}"
+                Flags="ValidateOnValueChanged"
+                MinimumLength="1"
+                MaximumLength="20"
+                IsValid="{Binding IsNameValid}"
+                        />
+
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry
+                x:Name="surnameEntry"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"
+                Placeholder="Surname"
+                WidthRequest="350"
+                FontSize="20"
+                Margin="0,5,0,5"
+                Text="{Binding Surname}">
+
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior 
+                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                ValidStyle="{StaticResource ValidEntryStyle}"
+                Flags="ValidateOnValueChanged"
+                MinimumLength="1"
+                MaximumLength="20"
+                IsValid="{Binding IsSurnameValid}"  
+                        />
+
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry
+                x:Name="emailEntry"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"
+                Placeholder="Email Address"
+                WidthRequest="350"
+                FontSize="20"
+                Margin="0,5,0,5"
+                Text="{Binding Email}">
+
+                <Entry.Behaviors>
+                    <toolkit:EmailValidationBehavior 
+      InvalidStyle="{StaticResource InvalidEntryStyle}"
+      IsValid="{Binding IsEmailValid}"                                                
+      ValidStyle="{StaticResource NormalEntryStyle}"                                                     
+      Flags="ValidateOnValueChanged" >
+                    </toolkit:EmailValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry
+                x:Name="passwordEntry"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"
+                IsPassword="True"
+                Placeholder="Password "
+                WidthRequest="350"
+                Margin="0,5,0,5"
+                MaxLength="14"
+                FontSize="20" 
+                Text="{Binding Password}">
+
+                <Entry.Behaviors>
+                    <toolkit:MultiValidationBehavior 
+      x:Name="PasswordMultiValidation"
+     InvalidStyle="{StaticResource InvalidEntryStyle}"  
+     ValidStyle="{StaticResource ValidEntryStyle}"
+     IsValid="{Binding IsPasswordValid}"
+     Flags="ValidateOnValueChanged">
+
+                        <toolkit:CharactersValidationBehavior 
+         x:Name="DigitValidation" 
+         CharacterType="Digit" 
+         MinimumCharacterTypeCount="1" 
+         toolkit:MultiValidationBehavior.Error="1 digit" 
+         RegexPattern="" />
+
+                        <toolkit:CharactersValidationBehavior 
+         x:Name="UpperValidation" 
+         CharacterType="UppercaseLetter" 
+         MinimumCharacterTypeCount="1" 
+         toolkit:MultiValidationBehavior.Error="1 upper case" 
+         RegexPattern="" />
+
+                        <toolkit:CharactersValidationBehavior 
+         x:Name="SymbolValidation" 
+         CharacterType="NonAlphanumericSymbol" 
+         MinimumCharacterTypeCount="1" 
+         toolkit:MultiValidationBehavior.Error="1 symbol" 
+         RegexPattern=""  />
+
+                        <toolkit:CharactersValidationBehavior 
+         x:Name="AnyValidation" 
+         CharacterType="Any" 
+         MinimumCharacterTypeCount="8" 
+         toolkit:MultiValidationBehavior.Error="8 characters" 
+         RegexPattern="" />
+                    </toolkit:MultiValidationBehavior>
+                </Entry.Behaviors>
+
+            </Entry>
+
+            <Entry
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"
+                IsPassword="True"
+                Placeholder="Confirm Password "
+                WidthRequest="350"
+                Margin="0,5,0,5"
+                MaxLength="14"
+                FontSize="20">
+
+                <Entry.Behaviors>
+                    <toolkit:RequiredStringValidationBehavior 
+      InvalidStyle="{StaticResource InvalidEntryStyle}"
+      ValidStyle="{StaticResource ValidEntryStyle}"
+      IsValid="{Binding IsConfirmedPasswordValid}"                                                
+      Flags="ValidateOnValueChanged"
+      RequiredString="{Binding Password}" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Button
+                Text="Create Account"
+                TextColor="White"
+                BackgroundColor="SeaGreen"
+                StyleId="TellUsPage"
+                Margin="0,10,0,10"
+                Command="{Binding SaveAthleteCommand}"
+                WidthRequest="350"/>
+
+            <Label
+                Text="Sign Up Using :"
+                TextColor="White" 
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Body"/>
+
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="0,10,0,10">
+                <Image
+                    Source="googleremove"
+                    Aspect="AspectFit"
+                    HeightRequest="70"
+                    HorizontalOptions="Center" 
+                    Margin="0,10,10,0"/>
+
+                <Image
+                    Source="facebook"
+                    Aspect="AspectFit"
+                    HeightRequest="50"
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <Button
+                Text="Already Have An Account?"
+                TextColor="White"
+                WidthRequest="300"
+                CornerRadius="100"
+                BackgroundColor="Black"
+                FontSize="Body" 
+                HorizontalOptions="Center"
+                Margin="0,0,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
