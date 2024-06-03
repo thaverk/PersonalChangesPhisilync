@@ -52,17 +52,24 @@ namespace PhisilyncFinal.ViewModels
         {
             InjuryVM1 = _injuryViewModel1;
 
+
             Events = new EventCollection()
 
             {
                 [DateTime.Now] = new List<Event>
                 {
                     new Event { Name = "Cool event1", Description = "This is Cool event1's description!", EventDate = DateTime.Now},
+                },
+
+                [DateTime.Now.AddDays(5)] = new List<Event>
+                {
+                    new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5)},
                 }
-
             };
-
-
+            //new Event { Name = "Cool event1", Description = "This is Cool event1's description!", EventDate = DateTime.Now };
+            //new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5) };
+            //new Event { Name = "Cool event3", Description = "This is Cool event3's description!", EventDate = DateTime.Now.AddDays(-3) };
+            //new Event { Name = "Cool event4", Description = "This is Cool event4's description!", EventDate = new DateTime(2020, 3, 16) };
         }
 
 
@@ -86,8 +93,8 @@ namespace PhisilyncFinal.ViewModels
         }
 
 
+
+
     }
 }
-
-
-                                                            
+              
