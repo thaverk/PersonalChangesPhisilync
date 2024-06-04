@@ -51,9 +51,12 @@ namespace PhisilyncFinal.ViewModels
         public CoachDashVM(InjuryViewModel _injuryViewModel1)
         {
             InjuryVM1 = _injuryViewModel1;
-
-
-            Events = new EventCollection()
+            Events = new();
+            AddEvents(Events, new List<Event>
+            {
+                new Event { Name = "Cool event1", Description = "This is Cool event1's description!", EventDate = DateTime.Now},
+            });
+            /*Events = new EventCollection()
 
             {
                 [DateTime.Now] = new List<Event>
@@ -65,7 +68,7 @@ namespace PhisilyncFinal.ViewModels
                 {
                     new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5)},
                 }
-            };
+            };*/
             //new Event { Name = "Cool event1", Description = "This is Cool event1's description!", EventDate = DateTime.Now };
             //new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5) };
             //new Event { Name = "Cool event3", Description = "This is Cool event3's description!", EventDate = DateTime.Now.AddDays(-3) };
@@ -92,7 +95,19 @@ namespace PhisilyncFinal.ViewModels
             currentPage.ShowPopup(new TeamStatsPopUp());
         }
 
+        public void AddEvents(EventCollection evnts, List<Event> item)
+        {
+            evnts.Add(DateTime.Now, item);
 
+            evnts.Add(DateTime.Now.AddDays(5), new List<Event>
+            {
+                new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5)},
+            });
+            evnts.Add(DateTime.Now.AddDays(-3), new List<Event>
+            {
+                new Event { Name = "Cool event3", Description = "This is Cool event3's description!", EventDate = DateTime.Now.AddDays(-3)},
+            });
+        }
 
 
     }
