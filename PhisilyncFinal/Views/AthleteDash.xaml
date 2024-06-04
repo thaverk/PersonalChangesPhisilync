@@ -120,8 +120,7 @@
             
                 
            
-            <cal:Calendar Events="{Binding Events}" 
-                          BindingContext="{Binding Events}"
+            <cal:Calendar Events="{Binding Events}"
                           EventsScrollViewVisible="True" 
                           SelectedDayBackgroundColor="SeaGreen"
                           CalendarLayout="Month"

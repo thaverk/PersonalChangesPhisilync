@@ -44,18 +44,13 @@ namespace PhisilyncFinal.ViewModels
         }
 
 
-
-
         private readonly IPageService _pageService;
 
         public CoachDashVM(InjuryViewModel _injuryViewModel1)
         {
             InjuryVM1 = _injuryViewModel1;
             Events = new();
-            AddEvents(Events, new List<Event>
-            {
-                new Event { Name = "Cool event1", Description = "This is Cool event1's description!", EventDate = DateTime.Now},
-            });
+            AddEvents(Events);
             /*Events = new EventCollection()
 
             {
@@ -95,10 +90,12 @@ namespace PhisilyncFinal.ViewModels
             currentPage.ShowPopup(new TeamStatsPopUp());
         }
 
-        public void AddEvents(EventCollection evnts, List<Event> item)
+        public void AddEvents(EventCollection evnts)
         {
-            evnts.Add(DateTime.Now, item);
-
+            evnts.Add(DateTime.Now, new List<Event>
+            {
+                new Event { Name = "Cool event1", Description = "This is Cool event1's description!", EventDate = DateTime.Now},
+            });
             evnts.Add(DateTime.Now.AddDays(5), new List<Event>
             {
                 new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5)},
