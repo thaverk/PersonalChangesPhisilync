@@ -20,6 +20,7 @@ namespace PhisilyncFinal.Models
 
         [ForeignKey (nameof(User))]
         public int UserID { get; set; }
+        public int Frequency { get; set; }
     }
 }
  

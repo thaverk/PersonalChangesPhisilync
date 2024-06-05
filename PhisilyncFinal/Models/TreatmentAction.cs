@@ -15,9 +15,5 @@ namespace PhisilyncFinal.Models
 
         [ForeignKey(typeof(Treatment))]
         public int treatmentActionTreatment { get; set; }
-
-
-
-       
     }
 }

@@ -668,10 +668,6 @@ namespace PhisilyncFinal.Services
         
         }
 
-     
-
-
-
         public void SaveUser(User user)
         {
             try
@@ -684,10 +680,10 @@ namespace PhisilyncFinal.Services
             }
         }
 
-        public void SaveTreatment(Event @event)
+        public void SaveTreatment(Event evnt)
             
             { 
-            _dbConnection.Insert(@event);
+            _dbConnection.Insert(evnt);
             }
 
         public void SaveDash(TreatmentDashboard dash, User user)
@@ -698,6 +694,18 @@ namespace PhisilyncFinal.Services
                 _dbConnection.Insert(dash);
                 user.userTreatment = dash.treatmentDashID;
                 _dbConnection.Update(user);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void SaveEvent(Event evnt)
+        {
+            try
+            {
+                _dbConnection.Insert(evnt);
             }
             catch (Exception ex)
             {
@@ -721,9 +729,20 @@ namespace PhisilyncFinal.Services
             return _dbConnection.Table<TreatmentAction>().Where(x=>x.treatmentActionTreatment==id && x.treatmentActionCategory=="Test").FirstOrDefault();
 
         }
+
         public List<Event> GetCurrentTreatment()
         { 
             return _dbConnection.Table<Event>().ToList();
+        }
+
+        public Event GetEventByFrequency(int frequency)
+        {
+            return _dbConnection.Table<Event>().Where(x => x.Frequency == frequency).FirstOrDefault();
+        }
+
+        public List<Event> GetEventsByTreatmentId(int treatmentId)
+        {
+            return _dbConnection.Table<Event>().Where(x => x.TreatmentID == treatmentId).ToList();
         }
 
         public TreatmentAction GetReleaseTreatmentAction(int id)

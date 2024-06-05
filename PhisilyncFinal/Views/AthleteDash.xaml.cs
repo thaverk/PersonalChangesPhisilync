@@ -9,13 +9,10 @@ namespace PhisilyncFinal.Views;
 
 public partial class AthleteDash : ContentPage
 {
-    
-
     public AthleteDash(AthleteDashVM athleteDashVM)
     {
         InitializeComponent();
         BindingContext = athleteDashVM;
-       
         OnAppearing();
     }
    
@@ -23,5 +20,4 @@ public partial class AthleteDash : ContentPage
     {
         await Shell.Current.GoToAsync("///TreatmentPage");
     }
-
 }

@@ -54,8 +54,8 @@ namespace PhisilyncFinal
             mauiAppBuilder.Services.AddTransient<SignUpPageAC>();
             mauiAppBuilder.Services.AddTransient<SignUpPageCoach>();
             mauiAppBuilder.Services.AddTransient<SignUpPageSP>();
-            mauiAppBuilder.Services.AddSingleton<AthleteDash>();
-            mauiAppBuilder.Services.AddSingleton<CoachDashboard>();
+            mauiAppBuilder.Services.AddTransient<AthleteDash>();
+            mauiAppBuilder.Services.AddTransient<CoachDashboard>();
             mauiAppBuilder.Services.AddTransient<ServiceProviderDashboard>();
             mauiAppBuilder.Services.AddTransient<Payment>();
             mauiAppBuilder.Services.AddTransient<LogInPage>();
