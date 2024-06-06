@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Windows.Input;
 using System.ComponentModel;
 using Plugin.Maui.Calendar.Models;
+using CommunityToolkit.Maui.Core.Extensions;
 //using ThreadNetwork;
 
 namespace PhisilyncFinal.ViewModels
@@ -50,6 +51,8 @@ namespace PhisilyncFinal.ViewModels
                 OnPropertyChanged();
             }
         }
+        
+        public ObservableCollection<Event> TreatmentEvents { get; set; }
 
         //private LocalDb _database;
         //private ObservableCollection<TreatmentAction> _treatmentaction;
@@ -67,19 +70,28 @@ namespace PhisilyncFinal.ViewModels
         public AthleteDashVM(InjuryViewModel injuryViewModel)
         {
             // _database = database;
+            
             InjuryVM = injuryViewModel;
-            Events = new();
+           
             db = new();
-            AddEvents(Events);
             //LoadData();
             OnAppearing();
             OnPropertyChanged();
         }
 
-        public override void Initialize()
+        
+       
+        
+        
+        public override void OnAppearing()
         {
-            base.Initialize();
+            TreatmentEvents = new ObservableCollection<Event>(db.GetCurrentTreatment());
+            Events = new EventCollection();
+            AddEvents();
+            base.OnAppearing();
+          
         }
+    
 
         /*private void LoadData()
         {
@@ -96,7 +108,7 @@ namespace PhisilyncFinal.ViewModels
         }
 
         [RelayCommand]
-        private async Task AthleteInjury() 
+        private async Task AthleteInjury()
         {
             await Shell.Current.GoToAsync("treatmentPage");
         }
@@ -107,33 +119,70 @@ namespace PhisilyncFinal.ViewModels
             await Shell.Current.GoToAsync("EditProfile");
         }
 
-        public void AddEvents(EventCollection evnts)
+       
+        
+        
+        public void AddEvents()
         {
-            int evntID = 0;
-            foreach(var treatment in db.GetCurrentTreatment())
-            {
-                if (treatment.Frequency == 1 && treatment.EventID != evntID + 1)
-                {
-                    for (int i = 0; i < 7; i++)
-                    { 
-                        evnts.Add(treatment.EventDate.AddDays(i), db.GetEventsByTreatmentId(treatment.TreatmentID));
-                    }
-                }
-                evntID++;
-                /*else if (treatment.Frequency == 2)
-                {
-                    for(int i = 0; i < 15; i+=7)
-                        evnts.Add(DateTime.Now.AddDays(i), db.GetCurrentTreatment());
+         
 
+            // DateTime EventDate=DateTime.Now;
+
+
+
+            foreach (var treatment in db.GetCurrentTreatment())
+            {
+                if (!Events.ContainsKey(treatment.EventDate))
+                { 
+                    Events.Add(treatment.EventDate, new List<Event> { treatment });
                 }
-                else if (treatment.Frequency == 3)
+                else  
                 {
-                    for (int i = 0; i < 61; i += 30)
-                        evnts.Add(DateTime.Now.AddDays(i), db.GetCurrentTreatment());
-                }*/
+                     List<Event> name = (List<Event>)Events[treatment.EventDate];
+                    name.Add(treatment);
+                    Events[treatment.EventDate] = name;
+                }
+                
+            }
+            
+
+
+        }
+        
+
+
+
+            // evnts.Add(db.GetCurrentTreatment()., db.GetCurrentTreatment());
+
+
+            //int days = 0;
+            //for (int i = 1; i < db.GetCurrentTreatment().Count; i += 2)
+            //{
+            //    if (db.GetEventsByEventID(i).Frequency == 1)
+            //    {
+            //        for (int j = 0; j < 7; j++)
+            //        {
+            //            events.Add(DateTime.Now.AddDays(days), db.GetEventsByTreatmentId(i));
+            //            days++;
+            //        }
+
+            //    }
+
+
+            //};
+            /*else if (treatment.Frequency == 2)
+            {
+                for(int i = 0; i < 15; i+=7)
+                    evnts.Add(DateTime.Now.AddDays(i), db.GetCurrentTreatment());
 
             }
-        }
+            else if (treatment.Frequency == 3)
+            {
+                for (int i = 0; i < 61; i += 30)
+                    evnts.Add(DateTime.Now.AddDays(i), db.GetCurrentTreatment());
+            }*/
+
+
             //{ evnts.Add(DateTime.Now, db.GetCurrentTreatment()); }
             //    evnts.Add(DateTime.Now.AddDays(5), new List<Event>
             //{
@@ -143,6 +192,6 @@ namespace PhisilyncFinal.ViewModels
             //{
             //    new Event { Name = "Cool event3", Description = "This is Cool event3's description!", EventDate = DateTime.Now.AddDays(-3)},
             //});
-    }
-}
+     }    
+}   
 
