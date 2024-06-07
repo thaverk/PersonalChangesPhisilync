@@ -1,4 +1,4 @@
-﻿ using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PhisilyncFinal.Services;
 using PhisilyncFinal.Views;
@@ -21,7 +21,9 @@ namespace PhisilyncFinal.ViewModels
     [QueryProperty(nameof(TreatmentAction), "InjuryTestDetails")]
     public partial class AthleteDashVM : BaseViewModel, INotifyPropertyChanged
     {
+
         LocalDb db = new LocalDb();
+
         private TreatmentAction? _injuryTestDetails;
 
         public TreatmentAction? InjuryTestDetails
@@ -97,8 +99,6 @@ namespace PhisilyncFinal.ViewModels
         {
             Events = new ObservableCollection<Event>(db.GetCurrentTreatment());
         }*/
-
-
 
         //Commands
         [RelayCommand]
