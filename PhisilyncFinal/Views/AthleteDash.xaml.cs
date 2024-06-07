@@ -12,10 +12,12 @@ public partial class AthleteDash : ContentPage
     public AthleteDash(AthleteDashVM athleteDashVM)
     {
         InitializeComponent();
-        BindingContext = athleteDashVM;
-        OnAppearing();
+       BindingContext = athleteDashVM;
+       OnAppearing();
     }
-   
+
+    
+
     private async void TreatmentProviderBtn_Clicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("///TreatmentPage");

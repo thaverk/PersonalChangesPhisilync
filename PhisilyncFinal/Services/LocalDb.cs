@@ -740,6 +740,11 @@ namespace PhisilyncFinal.Services
             return _dbConnection.Table<Event>().Where(x => x.Frequency == frequency).FirstOrDefault();
         }
 
+        public List<Event> GetEventsByEventID(int eventid)
+        {
+            return _dbConnection.Table<Event>().Where(x => x.EventID == eventid).ToList();
+        }
+
         public List<Event> GetEventsByTreatmentId(int treatmentId)
         {
             return _dbConnection.Table<Event>().Where(x => x.TreatmentID == treatmentId).ToList();

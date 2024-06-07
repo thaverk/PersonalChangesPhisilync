@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Windows.Input;
 using Plugin.Maui.Calendar.Models;
 
+
 namespace PhisilyncFinal.Views;
 
 public partial class TestAndReleasePage : ContentPage
@@ -63,30 +64,33 @@ public partial class TestAndReleasePage : ContentPage
             await DisplayAlert("Success", "Treatment Has Been Added To Yout Dashboard", "OK");
             //await Shell.Current.GoToAsync(new ("/athleteDash"));
         }
-        await Shell.Current.GoToAsync(new("athleteDash"));
+        await Shell.Current.GoToAsync("athleteDash");
     }
 
     public void DailyTreatment() 
     {
-        db.SaveEvent(new Event
+
+        for (int i = 1; i < 7; i++)
         {
-            Name = injurieTest.treatmentActionName,
-            Description = injurieTest.treatmentActionStepAction,
-            TreatmentID = injurieTest.treatmentActionTreatment,
-            EventDate = DateTime.Today,
-            Frequency = 1,
-            UserID = 1
-        });
-        db.SaveEvent(new Event
-        {
-            Name = injurieRelease.treatmentActionName,
-            Description = injurieRelease.treatmentActionStepAction,
-            TreatmentID = injurieRelease.treatmentActionTreatment,
-            EventDate = DateTime.Today,
-            UserID = 1,
-            Frequency = 1
-        });
-        
+            db.SaveEvent(new Event
+            {
+                Name = injurieTest.treatmentActionName,
+                Description = injurieTest.treatmentActionStepAction,
+                TreatmentID = injurieTest.treatmentActionTreatment,
+                EventDate = DateTime.Now.AddDays(i),
+                Frequency = 1,
+                UserID = 1
+            });
+            db.SaveEvent(new Event
+            {
+                Name = injurieRelease.treatmentActionName,
+                Description = injurieRelease.treatmentActionStepAction,
+                TreatmentID = injurieRelease.treatmentActionTreatment,
+                EventDate = DateTime.Now.AddDays(i),
+                UserID = 1,
+                Frequency = 1
+            });
+        }
 
         /*Events = new EventCollection()
         {
@@ -131,24 +135,27 @@ public partial class TestAndReleasePage : ContentPage
     
     public void WeeklyTreatment() 
     {
-        db.SaveEvent(new Event
+        for (int i = 0; i < 22; i += 7)
         {
-            Name = injurieTest.treatmentActionName,
-            Description = injurieTest.treatmentActionStepAction,
-            TreatmentID = injurieTest.treatmentActionTreatment,
-            EventDate = DateTime.Today,
-            UserID = 1,
-            Frequency = 2
-        });
-        db.SaveEvent(new Event
-        {
-            Name = injurieRelease.treatmentActionName,
-            Description = injurieRelease.treatmentActionStepAction,
-            TreatmentID = injurieRelease.treatmentActionTreatment,
-            EventDate = DateTime.Today,
-            UserID = 1,
-            Frequency = 2
-        });
+            db.SaveEvent(new Event
+            {
+                Name = injurieTest.treatmentActionName,
+                Description = injurieTest.treatmentActionStepAction,
+                TreatmentID = injurieTest.treatmentActionTreatment,
+                EventDate = DateTime.Now.AddDays(i),
+                UserID = 1,
+                Frequency = 2
+            });
+            db.SaveEvent(new Event
+            {
+                Name = injurieRelease.treatmentActionName,
+                Description = injurieRelease.treatmentActionStepAction,
+                TreatmentID = injurieRelease.treatmentActionTreatment,
+                EventDate = DateTime.Now.AddDays(i),
+                UserID = 1,
+                Frequency = 2
+            });
+        }
         //Shell.Current.GoToAsync(nameof(AthleteDash));
         /*Events = new EventCollection()
                 {
@@ -198,24 +205,27 @@ public partial class TestAndReleasePage : ContentPage
     }
     public void MonthlyTreatment() 
     {
-        db.SaveEvent(new Event
+        for (int i = 0; i < 31; i += 30)
         {
-            Name = injurieTest.treatmentActionName,
-            Description = injurieTest.treatmentActionStepAction,
-            TreatmentID = injurieTest.treatmentActionTreatment,
-            EventDate = DateTime.Today,
-            UserID = 1,
-            Frequency = 3
-        });
-        db.SaveEvent(new Event
-        {
-            Name = injurieRelease.treatmentActionName,
-            Description = injurieRelease.treatmentActionStepAction,
-            TreatmentID = injurieRelease.treatmentActionTreatment,
-            EventDate = DateTime.Today,
-            UserID = 1,
-            Frequency = 3
-        });
+            db.SaveEvent(new Event
+            {
+                Name = injurieTest.treatmentActionName,
+                Description = injurieTest.treatmentActionStepAction,
+                TreatmentID = injurieTest.treatmentActionTreatment,
+                EventDate = DateTime.Now.AddDays(i),
+                UserID = 1,
+                Frequency = 3
+            });
+            db.SaveEvent(new Event
+            {
+                Name = injurieRelease.treatmentActionName,
+                Description = injurieRelease.treatmentActionStepAction,
+                TreatmentID = injurieRelease.treatmentActionTreatment,
+                EventDate = DateTime.Now.AddDays(i),
+                UserID = 1,
+                Frequency = 3
+            });
+        }
         //Shell.Current.GoToAsync(nameof(AthleteDash));
 
         /*Events = new EventCollection()
