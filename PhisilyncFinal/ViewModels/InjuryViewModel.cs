@@ -13,21 +13,8 @@ namespace PhisilyncFinal.ViewModels
     public class InjuryViewModel : BaseViewModel
     {
         private LocalDb _database;
-        private ObservableCollection<ProviderInjury> _injuries;
-
         public ObservableCollection<ProviderInjury> Injuries { get; set; }
        
-
-
-        //public ObservableCollection<ProviderInjury> Injuries
-        //{
-        //    get => _injuries;
-        //    set
-        //    {
-        //        _injuries = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
         public InjuryViewModel()
         {
             
@@ -39,7 +26,6 @@ namespace PhisilyncFinal.ViewModels
         public override void Initialize()
         {
             base.Initialize();
-           
         }
 
     }

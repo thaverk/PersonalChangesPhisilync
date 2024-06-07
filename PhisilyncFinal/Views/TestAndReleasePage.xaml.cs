@@ -19,7 +19,15 @@ public partial class TestAndReleasePage : ContentPage
     public Treatment treatment { get; set; }
    
     public EventCollection _event;
-    public EventCollection Events { get {return _event; } set {_event=value;OnPropertyChanged(); }}
+    public EventCollection Events 
+    {
+        get {return _event; } 
+        set 
+        {
+            _event=value;
+            OnPropertyChanged(); 
+        }
+    }
 
     public TreatmentAction injurieRelease { get; set ;}
     
@@ -92,47 +100,7 @@ public partial class TestAndReleasePage : ContentPage
             });
         }
 
-        /*Events = new EventCollection()
-        {
-                [DateTime.Now] = new List<Event>
-                {
-                   new Event {  Name = injurieTest.treatmentActionName,
-                                 Description = injurieTest.treatmentActionStepAction,
-                                 TreatmentID = injurieTest.treatmentActionTreatment,
-                                 EventDate = DateTime.Now,
-                                 UserID = 1,},
-                   new Event{ Name = injurieRelease.treatmentActionName,
-                              Description = injurieRelease.treatmentActionStepAction,
-                              TreatmentID = injurieRelease.treatmentActionTreatment,
-                              EventDate = DateTime.Now,
-                              UserID = 1, }
-                }
-        };*/
-
-        /*for (int i = 0; i < 2; i++)
-            {
-                Events = new EventCollection()
-                {
-                    [DateTime.Now.AddDays(7)] = new List<Event>
-
-                    {
-
-                          new Event { Name = injurieTest.treatmentActionName,
-                                      Description = injurieTest.treatmentActionStepAction,
-                                      TreatmentID = injurieTest.treatmentActionTreatment,
-                                      EventDate = DateTime.Now.AddDays(7),
-                                      UserID = 1,
-                             },
-
-                    new Event { Name = injurieRelease.treatmentActionName,
-                                    Description = injurieRelease.treatmentActionStepAction,
-                                    TreatmentID = injurieRelease.treatmentActionTreatment,
-                                    EventDate = DateTime.Now.AddDays(7),
-                                    UserID = 1,},
-                }
-                };*/
-            }
-    
+    }
     public void WeeklyTreatment() 
     {
         for (int i = 0; i < 22; i += 7)
@@ -156,52 +124,6 @@ public partial class TestAndReleasePage : ContentPage
                 Frequency = 2
             });
         }
-        //Shell.Current.GoToAsync(nameof(AthleteDash));
-        /*Events = new EventCollection()
-                {
-                    [DateTime.Now] = new List<Event>
-                    {
-                      new Event{  Name = injurieTest.treatmentActionName,
-                             Description = injurieTest.treatmentActionStepAction,
-                                TreatmentID = injurieTest.treatmentActionTreatment,
-                                EventDate = DateTime.Now,
-                                UserID = 1, },
-
-                      new Event{Name = injurieRelease.treatmentActionName,
-                    Description = injurieRelease.treatmentActionStepAction,
-                    TreatmentID = injurieRelease.treatmentActionTreatment,
-                    EventDate = DateTime.Now,
-                    UserID = 1,}
-
-                    }
-                };
-
-
-
-                for (int i = 0; i == 7; i++)
-                {
-                    Events = new EventCollection()
-                    {
-                        [DateTime.Now] = new List<Event>
-                        {
-                           new Event{ Name = injurieTest.treatmentActionName,
-                            Description = injurieTest.treatmentActionStepAction,
-                            TreatmentID = injurieTest.treatmentActionTreatment,
-                            EventDate = DateTime.Now.AddDays(1),
-                            UserID = 1, },
-
-                           new Event{ Name = injurieRelease.treatmentActionName,
-                        Description = injurieRelease.treatmentActionStepAction,
-                        TreatmentID = injurieRelease.treatmentActionTreatment,
-                        EventDate = DateTime.Now.AddDays(1),
-                        UserID = 1,}
-                        }
-                    };*/
-
-
-
-
-
     }
     public void MonthlyTreatment() 
     {
@@ -226,58 +148,6 @@ public partial class TestAndReleasePage : ContentPage
                 Frequency = 3
             });
         }
-        //Shell.Current.GoToAsync(nameof(AthleteDash));
-
-        /*Events = new EventCollection()
-                {
-                    [DateTime.Now] = new List<Event>
-                    {
-                       new Event { Name = injurieTest.treatmentActionName,
-                        Description = injurieTest.treatmentActionStepAction,
-                        TreatmentID = injurieTest.treatmentActionTreatment,
-                        EventDate = DateTime.Now,
-                        UserID = 1, },
-
-                         new Event{ Name = injurieRelease.treatmentActionName,
-                        Description = injurieRelease.treatmentActionStepAction,
-                        TreatmentID = injurieRelease.treatmentActionTreatment,
-                        EventDate = DateTime.Now,
-                        UserID = 1, },
-
-                    }  
-
-
-
-                };
-
-
-
-
-                for (int i = 0; i == 3; i++)
-                {
-                    Events = new EventCollection()
-                    {
-                        [DateTime.Now.AddMonths(1)] = new List<Event>
-                        { 
-                            new Event
-                            { Name = injurieTest.treatmentActionName,
-                            Description = injurieTest.treatmentActionStepAction,
-                            TreatmentID = injurieTest.treatmentActionTreatment,
-                            EventDate = DateTime.Now.AddMonths(1),
-                            UserID = 1, },
-
-                            new Event
-                            {  Name = injurieRelease.treatmentActionName,
-                        Description = injurieRelease.treatmentActionStepAction,
-                        TreatmentID = injurieRelease.treatmentActionTreatment,
-                        EventDate = DateTime.Now.AddMonths(1),
-                        UserID = 1,}
-                        }
-                    };
-
-
-
-                }*/
 
     }
 

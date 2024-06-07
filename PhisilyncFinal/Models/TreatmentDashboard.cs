@@ -12,7 +12,6 @@ namespace PhisilyncFinal.Models
         [ForeignKey(typeof(Treatment))]
         public int treatmentDashboardTreatment { get; set; }
 
-
         [ForeignKey(typeof(TreatmentAction))]
         public int treatmentActionTestID { get; set; }
 
@@ -22,7 +21,6 @@ namespace PhisilyncFinal.Models
         [ForeignKey(typeof(User))]
         public int UserId { get; set; }
        
-
         public DateTime treatmentDashDate { get; set; }
         public bool treatmentDashDone { get; set; }
     }

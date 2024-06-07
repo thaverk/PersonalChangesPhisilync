@@ -5,7 +5,7 @@ using PhisilyncFinal.ViewModels;
 namespace PhisilyncFinal.Views;
 public partial class CoachDashboard : ContentPage
 {
-	//public EventCollection CoachEvents { get; set; }
+
 	public CoachDashboard(CoachDashVM coachDashVM)
 	{
 		InitializeComponent();
@@ -25,8 +25,5 @@ public partial class CoachDashboard : ContentPage
             viewModel.PopUpClicked(sender, e);
         }
     }
-
-
-
 
 }

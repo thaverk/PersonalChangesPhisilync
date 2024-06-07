@@ -10,5 +10,4 @@ public partial class SignUpPageSP : ContentPage
         BindingContext = vm;
     }
 
-
 }
