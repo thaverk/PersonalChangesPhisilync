@@ -10,8 +10,7 @@ namespace PhisilyncFinal.Views;
 
 public partial class TestAndReleasePage : ContentPage
 {
-    
-    //public ProviderInjury _injury;
+
     private LocalDb db;
     
     public TreatmentAction injurieTest { get; set; }

@@ -8,7 +8,6 @@ namespace PhisilyncFinal.Models
         [PrimaryKey, AutoIncrement]
         public int? treatmentActionID { get; set; }
         public string treatmentActionName { get; set; }
-        
         public string treatmentActionStepAction { get; set; }
         public int treatmentActionStepOrder { get; set; }
         public string treatmentActionCategory { get; set; }

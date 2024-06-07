@@ -1,4 +1,4 @@
-﻿ using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PhisilyncFinal.Services;
 using PhisilyncFinal.Views;
@@ -20,7 +20,9 @@ namespace PhisilyncFinal.ViewModels
     [QueryProperty(nameof(TreatmentAction), "InjuryTestDetails")]
     public partial class AthleteDashVM : BaseViewModel, INotifyPropertyChanged
     {
+
         LocalDb db = new LocalDb();
+
         private TreatmentAction? _injuryTestDetails;
 
         public TreatmentAction? InjuryTestDetails
@@ -86,8 +88,6 @@ namespace PhisilyncFinal.ViewModels
             Events = new ObservableCollection<Event>(db.GetCurrentTreatment());
         }*/
 
-
-
         //Commands
         [RelayCommand]
         private async Task Injury()
@@ -134,15 +134,7 @@ namespace PhisilyncFinal.ViewModels
 
             }
         }
-            //{ evnts.Add(DateTime.Now, db.GetCurrentTreatment()); }
-            //    evnts.Add(DateTime.Now.AddDays(5), new List<Event>
-            //{
-            //    new Event { Name = "Cool event2", Description = "This is Cool event2's description!", EventDate = DateTime.Now.AddDays(5)},
-            //});
-            //    evnts.Add(DateTime.Now.AddDays(-3), new List<Event>
-            //{
-            //    new Event { Name = "Cool event3", Description = "This is Cool event3's description!", EventDate = DateTime.Now.AddDays(-3)},
-            //});
+        
     }
 }
 

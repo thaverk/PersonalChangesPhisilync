@@ -10,7 +10,6 @@ namespace PhisilyncFinal.Models
 {
     public class Treatment
     {
-
         [PrimaryKey,AutoIncrement]
         public int treatmentID { get; set; }
         public string treatmentName { get; set; }
@@ -19,8 +18,6 @@ namespace PhisilyncFinal.Models
         [ForeignKey(typeof(ProviderInjury))]
         public int treatmentInjury { get; set; }
 
-        
-        
         [ForeignKey(typeof(TreatmentFrequency))]
         public int treatmentTreatmentFrequency { get; set; }
 
